@@ -81,7 +81,7 @@ const ubuntu = Ubuntu({
 })
 
 export const metadata: Metadata = {
-  title: "Portfólio - Designer Criativo",
+  title: "Portfolio Creative Art",
   description: "Portfólio profissional showcasing creative projects",
   generator: "v0.app",
 }
