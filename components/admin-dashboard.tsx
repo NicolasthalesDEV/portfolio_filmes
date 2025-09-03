@@ -1826,6 +1826,22 @@ export default function AdminDashboard() {
                           type="email"
                         />
                       </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Email Destination (where form submissions go)</label>
+                        <Input
+                          value={contactContent.emailDestination || contactContent.personalInfo.email}
+                          onChange={(e) => setContactContent({
+                            ...contactContent,
+                            emailDestination: e.target.value
+                          })}
+                          className="bg-muted border-border text-foreground"
+                          placeholder="admin@yourportfolio.com"
+                          type="email"
+                        />
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Contact form submissions will be sent to this email address
+                        </p>
+                      </div>
                     </div>
                   </div>
 

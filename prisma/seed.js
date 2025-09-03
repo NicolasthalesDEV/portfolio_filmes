@@ -170,13 +170,24 @@ async function executarSeedCompleto() {
       data: {
         page_type: 'contact',
         content: JSON.stringify({
-          title: "LET'S CONNECT",
-          subtitle: "Ready to bring your vision to life? I'd love to hear about your project.",
-          email: "hello@portfolio.com",
-          phone: "+1 (555) 123-4567",
+          title: "CONTACT",
+          subtitle: "Let's collaborate on your next creative project",
+          getInTouchTitle: "Get in Touch",
+          getInTouchDescription: "Always interested in new opportunities and creative challenges. Whether you have a project in mind or just want to connect, I'd love to hear from you.",
+          personalInfo: {
+            name: "Portfolio Designer",
+            position: "Creative Professional",
+            company: "Available for Projects",
+            email: "contact@portfolio.com"
+          },
+          emailDestination: "admin@portfolio.com", // Email where form submissions will be sent
           typography: {
-            title: { fontFamily: 'Oswald', fontSize: 48 },
-            subtitle: { fontFamily: 'Inter', fontSize: 18 }
+            title: { fontFamily: 'Inter', fontSize: 56 },
+            subtitle: { fontFamily: 'Inter', fontSize: 20 },
+            sectionTitle: { fontFamily: 'Inter', fontSize: 28 },
+            sectionBody: { fontFamily: 'Inter', fontSize: 18 },
+            name: { fontFamily: 'Inter', fontSize: 24 },
+            small: { fontFamily: 'Inter', fontSize: 16 }
           }
         })
       }

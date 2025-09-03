@@ -71,6 +71,7 @@ export const defaultContactContent = {
     company: "Available for Projects",
     email: "contact@portfolio.com"
   },
+  emailDestination: "contact@portfolio.com", // Email where form submissions will be sent
   typography: {
     title: { fontFamily: 'Inter', fontSize: 56 },
     subtitle: { fontFamily: 'Inter', fontSize: 20 },

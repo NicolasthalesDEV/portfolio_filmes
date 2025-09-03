@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import nodemailer from "nodemailer"
+import { getPageContent } from "@/lib/contentApi"
 
 export async function POST(req: NextRequest) {
   console.log("Email API called")
@@ -13,6 +14,19 @@ export async function POST(req: NextRequest) {
       console.log("Missing required fields")
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
+
+    // Get email destination from contact page content
+    let emailDestination = "contact@portfolio.com" // fallback
+    try {
+      const contactContent = await getPageContent('contact')
+      if (contactContent?.content?.emailDestination) {
+        emailDestination = contactContent.content.emailDestination
+      }
+    } catch (error) {
+      console.log("Could not get email destination from content, using fallback")
+    }
+    
+    console.log("Email will be sent to:", emailDestination)
 
     // Check if email configuration is available and valid
     const emailConfig = {
@@ -51,7 +65,7 @@ export async function POST(req: NextRequest) {
 
     await transporter.sendMail({
       from: `"Website Contact" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_TO || "malobi@gmail.com",
+      to: emailDestination, // Dynamic email from contact page content
       subject: `Portfolio Contact: ${subject || 'No Subject'}`,
       html: `
         <h2>New Contact Form Submission</h2>
