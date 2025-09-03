@@ -1,0 +1,627 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Updated color tokens to match minimalist portfolio design brief */
+  --background: #ffffff;
+  --foreground: #1f2937;
+  --card: #f8fafc;
+  --card-foreground: #374151;
+  --popover: #ffffff;
+  --popover-foreground: #374151;
+  --primary: #374151;
+  --primary-foreground: #ffffff;
+  --secondary: #6366f1;
+  --secondary-foreground: #ffffff;
+  --muted: #f8fafc;
+  --muted-foreground: #475569;
+  --accent: #6366f1;
+  --accent-foreground: #ffffff;
+  --destructive: #be123c;
+  --destructive-foreground: #ffffff;
+  --border: #e5e7eb;
+  --input: #f8fafc;
+  --ring: rgba(99, 102, 241, 0.5);
+  --radius: 0.5rem;
+  
+  /* Font Variables */
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-playfair: 'Playfair Display', 'Times New Roman', serif;
+  --font-lora: 'Lora', 'Times New Roman', serif;
+  --font-roboto: 'Roboto', system-ui, sans-serif;
+  --font-montserrat: 'Montserrat', system-ui, sans-serif;
+  --font-open-sans: 'Open Sans', system-ui, sans-serif;
+  --font-poppins: 'Poppins', system-ui, sans-serif;
+  --font-oswald: 'Oswald', system-ui, sans-serif;
+  --font-raleway: 'Raleway', system-ui, sans-serif;
+  --font-ubuntu: 'Ubuntu', system-ui, sans-serif;
+  
+  /* Portfolio Design Base Color */
+  --base-color: #ff214f;
+}
+
+.dark {
+  /* Updated dark mode tokens to maintain consistency */
+  --background: #1f2937;
+  --foreground: #ffffff;
+  --card: #374151;
+  --card-foreground: #ffffff;
+  --popover: #374151;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #1f2937;
+  --secondary: #6366f1;
+  --secondary-foreground: #ffffff;
+  --muted: #475569;
+  --muted-foreground: #9ca3af;
+  --accent: #6366f1;
+  --accent-foreground: #ffffff;
+  --destructive: #be123c;
+  --destructive-foreground: #ffffff;
+  --border: #475569;
+  --input: #374151;
+  --ring: rgba(99, 102, 241, 0.5);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+/* Animações personalizadas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scroll suave global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Melhorar a experiência de hover */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  /* Tailwind-enhanced base rules */
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Plain CSS fallbacks to avoid purple visited links and underlines */
+a { text-decoration: none; color: #d1d5db; }
+a:hover { color: #ffffff; }
+a:visited { color: #d1d5db; }
+
+/* Theme transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Light theme support - Complete inversion */
+.light {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 220 13% 18%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5.9% 10%;
+  --radius: 0.5rem;
+}
+
+/* Light theme - Complete color inversion */
+.light body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.light header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #e5e7eb !important;
+}
+
+.light a {
+  color: #374151 !important;
+}
+
+.light a:hover {
+  color: #000000 !important;
+}
+
+.light a:visited {
+  color: #374151 !important;
+}
+
+/* Light theme for cards and containers */
+.light .bg-black {
+  background-color: #ffffff !important;
+}
+
+.light .bg-gray-900 {
+  background-color: #f9fafb !important;
+}
+
+.light .bg-gray-800 {
+  background-color: #f3f4f6 !important;
+}
+
+.light .bg-gray-700 {
+  background-color: #e5e7eb !important;
+}
+
+.light .text-white {
+  color: #000000 !important;
+}
+
+.light .text-gray-300 {
+  color: #374151 !important;
+}
+
+.light .text-gray-400 {
+  color: #6b7280 !important;
+}
+
+.light .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+.light .border-gray-800 {
+  border-color: #e5e7eb !important;
+}
+
+.light .border-gray-700 {
+  border-color: #d1d5db !important;
+}
+
+.light .border-gray-600 {
+  border-color: #9ca3af !important;
+}
+
+/* Light theme for buttons and interactive elements */
+.light .hover\\:bg-gray-800:hover {
+  background-color: #f3f4f6 !important;
+}
+
+.light .hover\\:bg-gray-700:hover {
+  background-color: #e5e7eb !important;
+}
+
+.light .hover\\:text-white:hover {
+  color: #000000 !important;
+}
+
+/* Light theme for gradients */
+.light .bg-gradient-to-r {
+  background: linear-gradient(90deg, #2563eb, #7c3aed) !important;
+}
+
+.light .bg-gradient-to-br {
+  background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+}
+
+/* Light theme for shadows and overlays */
+.light .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.light .backdrop-blur-sm {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Light theme for specific components */
+.light [class*="from-black/60"] {
+  --tw-gradient-from: rgba(255, 255, 255, 0.6) !important;
+}
+
+.light [class*="bg-black/80"] {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.light [class*="bg-purple-600/80"] {
+  background-color: rgba(59, 130, 246, 0.8) !important;
+}
+
+.light [class*="bg-white/90"] {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Ensure project titles are always dark in light mode */
+.light .text-foreground {
+  color: #000000 !important;
+}
+
+.light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
+  color: #000000 !important;
+}
+
+/* Dark theme keeps existing styling */
+.dark body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+  .dark header {
+    background-color: rgba(0, 0, 0, 0.95) !important;
+    border-color: #374151 !important;
+  }
+
+  .dark a {
+    color: #d1d5db !important;
+  }
+
+  .dark a:hover {
+    color: #ffffff !important;
+  }
+
+  .dark a:visited {
+    color: #d1d5db !important;
+  }
+
+  /* Dark theme for cards and containers */
+  .dark .bg-white {
+    background-color: #000000 !important;
+  }
+
+  .dark .bg-gray-900 {
+    background-color: #1f2937 !important;
+  }
+
+  .dark .bg-gray-800 {
+    background-color: #374151 !important;
+  }
+
+  .dark .bg-gray-700 {
+    background-color: #4b5563 !important;
+  }
+
+  .dark .text-black {
+    color: #ffffff !important;
+  }
+
+  .dark .text-gray-300 {
+    color: #d1d5db !important;
+  }
+
+  .dark .text-gray-400 {
+    color: #9ca3af !important;
+  }
+
+  .dark .text-gray-500 {
+    color: #6b7280 !important;
+  }
+
+  .dark .border-gray-800 {
+    border-color: #374151 !important;
+  }
+
+  .dark .border-gray-700 {
+    border-color: #4b5563 !important;
+  }
+
+/* Portfolio Grid Clean Styles */
+.portfolio-clean {
+  --base-color: #ff214f;
+}
+
+.portfolio-card {
+  position: relative;
+  overflow: visible; /* Allow content to overflow */
+  isolation: isolate; /* Create new stacking context for each card */
+}
+
+.portfolio-card:hover {
+  z-index: 100; /* Bring hovered card to front */
+}
+
+.portfolio-card .image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Keep overflow hidden only on image container */
+}
+
+.portfolio-card .image-container img {
+  transition: all 0.5s ease-in-out;
+  filter: grayscale(100%) brightness(0.7);
+}
+
+.portfolio-card:hover .image-container img {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.05);
+}
+
+.portfolio-card .category-text {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(8px);
+  z-index: 20;
+}
+
+.portfolio-card:hover .category-text {
+  opacity: 0.7;
+  letter-spacing: 3px;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .portfolio-card:hover .category-text {
+    letter-spacing: 5px;
+  }
+}
+
+/* Removed color overlay - using grayscale effect instead */
+/*
+.portfolio-card .color-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--base-color);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.portfolio-card:hover .color-overlay {
+  opacity: 0.8;
+}
+*/
+
+.portfolio-card .title-box {
+  position: absolute;
+  right: -250px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  z-index: 50;
+  transition: all 0.3s ease-in-out;
+  white-space: nowrap;
+  min-width: max-content;
+  pointer-events: none; /* Prevent interference with interactions */
+}
+
+.portfolio-card:hover .title-box {
+  right: -200px;
+  opacity: 1;
+}
+
+.portfolio-card .separator-line {
+  height: 1px;
+  width: 50px;
+  background-color: #000;
+  margin-bottom: 15px;
+  margin-left: -10px;
+}
+
+@media (max-width: 768px) {
+  .portfolio-card .title-box {
+    right: -200px;
+  }
+  
+  .portfolio-card:hover .title-box {
+    right: -150px;
+  }
+  
+  .portfolio-card .separator-line {
+    display: none;
+  }
+}
+
+/* Ensure containers allow overflow */
+.portfolio-clean .container {
+  overflow: visible !important;
+  max-width: 1800px; /* Increased max-width for more space */
+}
+
+.portfolio-clean .grid {
+  overflow: visible !important;
+  margin: 0 auto;
+  padding: 0 4rem; /* Additional padding for text space */
+  gap: 6rem; /* Force minimum gap */
+}
+
+@media (min-width: 768px) {
+  .portfolio-clean .grid {
+    padding: 0 5rem;
+    gap: 8rem;
+  }
+}
+
+/* Font Utility Classes */
+.font-inter { font-family: var(--font-inter) !important; }
+.font-playfair { font-family: var(--font-playfair) !important; }
+.font-lora { font-family: var(--font-lora) !important; }
+.font-roboto { font-family: var(--font-roboto) !important; }
+.font-montserrat { font-family: var(--font-montserrat) !important; }
+.font-open-sans { font-family: var(--font-open-sans) !important; }
+.font-poppins { font-family: var(--font-poppins) !important; }
+.font-oswald { font-family: var(--font-oswald) !important; }
+.font-raleway { font-family: var(--font-raleway) !important; }
+.font-ubuntu { font-family: var(--font-ubuntu) !important; }
+
+/* Dynamic Font Application */
+[style*="font-family"] {
+  font-family: inherit !important;
+}
+
+@media (min-width: 1024px) {
+  .portfolio-clean .grid {
+    padding: 0 6rem;
+    gap: 10rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .portfolio-clean .grid {
+    padding: 0 7rem;
+    gap: 12rem;
+  }
+}
+
+  .dark .border-gray-600 {
+    border-color: #9ca3af !important;
+  }

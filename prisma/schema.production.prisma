@@ -1,0 +1,67 @@
+// This is a production schema example file
+// Replace the content of prisma/schema.prisma with this when going to production
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"  // Change to "mysql" if using MySQL
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String?
+  name      String?
+  user_type String?  @default("admin")
+  is_active Boolean  @default(true)
+  created_at DateTime @default(now())
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  category    String?
+  thumbnail   String?
+  visibility  Boolean  @default(true)
+  media       String?  // JSON string for compatibility
+  created_at  DateTime @default(now())
+  // relations
+  projectSkills ProjectSkill[]
+}
+
+model Skill {
+  id       String @id @default(cuid())
+  name     String @unique
+  icon_url String?
+  // relations
+  projectSkills ProjectSkill[]
+}
+
+model ProjectSkill {
+  id        String @id @default(cuid())
+  projectId String
+  skillId   String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  skill     Skill   @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  
+  @@unique([projectId, skillId])
+}
+
+model Contact {
+  id         String   @id @default(cuid())
+  name       String
+  email      String
+  message    String
+  created_at DateTime @default(now())
+}
+
+model PageContent {
+  id        String   @id @default(cuid())
+  page_type String   @unique
+  content   String   // JSON string
+  updated_at DateTime @default(now()) @updatedAt
+}

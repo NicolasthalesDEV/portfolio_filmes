@@ -1,0 +1,36 @@
+/* Page transition animations (imported from user snippet) */
+
+.pt-page-moveToLeft {
+	-webkit-animation: moveToLeft .6s ease both;
+	animation: moveToLeft .6s ease both;
+}
+.pt-page-moveFromRight {
+	-webkit-animation: moveFromRight .6s ease both;
+	animation: moveFromRight .6s ease both;
+}
+.pt-page-fade {
+	-webkit-animation: fade .7s ease both;
+	animation: fade .7s ease both;
+}
+@-webkit-keyframes moveToLeft {
+	from { }
+	to { -webkit-transform: translateX(-100%); }
+}
+@keyframes moveToLeft {
+	from { }
+	to { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+}
+@-webkit-keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); }
+}
+@keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); transform: translateX(100%); }
+}
+@-webkit-keyframes fade {
+	from { }
+	to { opacity: 0.3; }
+}
+@keyframes fade {
+	from { }
+	to { opacity: 0.3; }
+}
