@@ -9,5 +9,7 @@
       "src": "package.json",
       "use": "@vercel/next"
     }
-  ]
+  ],
+  "regions": ["iad1"],
+  "framework": "nextjs"
 }
