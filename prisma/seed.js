@@ -4,7 +4,7 @@ const prisma = new PrismaClient()
 async function executarSeedCompleto() {
   console.log('🌱 INICIANDO SEED COMPLETO DO PORTFOLIO')
   console.log('')
-  
+
   try {
     // LIMPEZA
     console.log('🧹 Limpando banco...')
@@ -15,7 +15,7 @@ async function executarSeedCompleto() {
     await prisma.user.deleteMany()
     console.log('✓ Banco limpo')
     console.log('')
-    
+
     // USUÁRIO ADMIN
     console.log('👤 Criando admin...')
     const admin = await prisma.user.create({
@@ -29,7 +29,7 @@ async function executarSeedCompleto() {
     })
     console.log(`✓ Admin: ${admin.email}`)
     console.log('')
-    
+
     // SKILLS
     console.log('🛠️ Criando skills...')
     const skills = await Promise.all([
@@ -44,10 +44,10 @@ async function executarSeedCompleto() {
     ])
     console.log(`✓ ${skills.length} skills criadas`)
     console.log('')
-    
+
     // PROJETOS
     console.log('🎬 Criando projetos...')
-    
+
     const projetos = [
       {
         title: 'Sunset Dreams',
@@ -106,7 +106,7 @@ async function executarSeedCompleto() {
         skillIds: [skills[7].id, skills[1].id] // Advertising, Branding
       }
     ]
-    
+
     for (let i = 0; i < projetos.length; i++) {
       const projeto = projetos[i]
       await prisma.project.create({
@@ -117,7 +117,7 @@ async function executarSeedCompleto() {
           thumbnail: projeto.thumbnail,
           visibility: true,
           media: JSON.stringify([
-            { id: `${i+1}`, url: `/placeholder.svg?height=600&width=800&text=Media+${i+1}`, type: 'image', name: `Media ${i+1}` }
+            { id: `${i + 1}`, url: `/placeholder.svg?height=600&width=800&text=Media+${i + 1}`, type: 'image', name: `Media ${i + 1}` }
           ]),
           projectSkills: {
             create: projeto.skillIds.map(skillId => ({ skillId }))
@@ -127,10 +127,10 @@ async function executarSeedCompleto() {
       console.log(`  ✓ ${projeto.title}`)
     }
     console.log('')
-    
+
     // CONTEÚDO DAS PÁGINAS
     console.log('📄 Configurando páginas...')
-    
+
     await prisma.pageContent.create({
       data: {
         page_type: 'home',
@@ -144,7 +144,7 @@ async function executarSeedCompleto() {
         })
       }
     })
-    
+
     await prisma.pageContent.create({
       data: {
         page_type: 'about',
@@ -165,7 +165,7 @@ async function executarSeedCompleto() {
         })
       }
     })
-    
+
     await prisma.pageContent.create({
       data: {
         page_type: 'contact',
@@ -194,7 +194,7 @@ async function executarSeedCompleto() {
     })
     console.log('✓ 3 páginas configuradas')
     console.log('')
-    
+
     // VERIFICAÇÃO FINAL
     const totals = await Promise.all([
       prisma.user.count(),
@@ -202,7 +202,7 @@ async function executarSeedCompleto() {
       prisma.project.count(),
       prisma.pageContent.count()
     ])
-    
+
     console.log('✅ SEED COMPLETADO COM SUCESSO!')
     console.log('')
     console.log('📊 RESUMO FINAL:')
@@ -217,12 +217,12 @@ async function executarSeedCompleto() {
     console.log('')
     console.log('🎯 CATEGORIAS:')
     console.log('  • Film project')
-    console.log('  • Graphic Design Project') 
+    console.log('  • Graphic Design Project')
     console.log('  • Illustration project')
     console.log('  • Architecture Project')
     console.log('  • Small fine art project')
     console.log('  • Advertising project')
-    
+
   } catch (error) {
     console.error('❌ ERRO NO SEED:', error)
     throw error
